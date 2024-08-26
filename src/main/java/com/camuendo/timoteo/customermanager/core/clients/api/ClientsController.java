@@ -21,8 +21,8 @@ public class ClientsController {
     }
 
     @GetMapping
-    public List<Client> getAll() {
-        return this.clientsService.findAll();
+    public ResponseEntity<List<Client>> getAll() {
+        return ResponseEntity.ok(this.clientsService.findAll());
     }
 
     @GetMapping("/{id}")
@@ -31,19 +31,20 @@ public class ClientsController {
     }
 
     @PostMapping
-    public Client create(@RequestBody @Valid CreateClientDTO client) {
-        return this.clientsService.save(client);
+    public ResponseEntity<Client> create(@RequestBody @Valid CreateClientDTO client) {
+        return ResponseEntity.ok(this.clientsService.save(client));
     }
 
     @PutMapping("/{id}")
-    public Client updateClient(
+    public ResponseEntity<Client> updateClient(
             @PathVariable Long id,
             @RequestBody @Valid UpdateClientDTO client) {
-        return this.clientsService.update(id, client);
+        return ResponseEntity.ok(this.clientsService.update(id, client));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteClient(@PathVariable Long id) {
+    public ResponseEntity<?> deleteClient(@PathVariable Long id) {
         this.clientsService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

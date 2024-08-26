@@ -3,6 +3,7 @@ package com.camuendo.timoteo.customermanager.generics.crud;
 import com.camuendo.timoteo.customermanager.generics.dto.GenericMapperDTO;
 import com.camuendo.timoteo.customermanager.generics.repositories.GenericRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.dao.DataIntegrityViolationException;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -34,8 +35,13 @@ public class GenericCRUDServiceImpl<T, ID, C, U> implements GenericCRUDService<T
     @Override
     public void delete(ID id) {
         T entity = findById(id);
-        repository.delete(entity);
-
+        try {
+            repository.deleteById(id);
+        } catch (DataIntegrityViolationException e) {
+            throw new DataIntegrityViolationException("Cannot delete entity with ID: " + id);
+        } catch (Exception e) {
+            throw new RuntimeException("An error occurred while deleting entity with ID: " + id);
+        }
     }
 
     @Override
