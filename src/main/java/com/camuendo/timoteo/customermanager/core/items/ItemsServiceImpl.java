@@ -14,4 +14,16 @@ public class ItemsServiceImpl extends GenericCRUDServiceImpl<Item, Long, CreateI
     public ItemsServiceImpl(ItemRepository repository, MapperItem mapper) {
         super(repository, mapper);
     }
+
+    public void verifyStock(Long id, Integer quantity) {
+        Item item = this.findById(id);
+        int aux = item.getStock() - quantity;
+        if (aux < 0) {
+            throw new IllegalArgumentException("Ya no puede comprar este item");
+        }
+        item.setStock(aux);
+        UpdateItemDTO updateItemDTO = new UpdateItemDTO();
+        updateItemDTO.setStock(aux);
+        super.update(id, updateItemDTO);
+    }
 }

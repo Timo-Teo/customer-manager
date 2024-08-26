@@ -16,4 +16,6 @@ public class ClientsServiceImpl extends GenericCRUDServiceImpl<Client, Long, Cre
     }
 
 
+
+
 }

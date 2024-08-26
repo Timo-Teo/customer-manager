@@ -81,6 +81,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
             for (int j = 0; j < i.getQuantity(); j++) {
                 items.add(item);
+                this.itemsService.verifyStock(item.getId(), j + 1);
             }
         });
 
@@ -92,6 +93,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         Client client = clientsService.findById(createPurchaseOrderDTO.getClientId());
 
         List<Item> items = getItems(createPurchaseOrderDTO.getItems());
+
         LocalDateTime date = LocalDateTime.now();
 
         PurchaseOrder purchaseOrder = new PurchaseOrder();
