@@ -15,6 +15,7 @@ import com.camuendo.timoteo.customermanager.core.purchase_orders.util.ItemQuanti
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
@@ -91,11 +92,12 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         Client client = clientsService.findById(createPurchaseOrderDTO.getClientId());
 
         List<Item> items = getItems(createPurchaseOrderDTO.getItems());
+        LocalDateTime date = LocalDateTime.now();
 
         PurchaseOrder purchaseOrder = new PurchaseOrder();
         purchaseOrder.setStatus(OrderStatus.IN_PROGRESS);
         purchaseOrder.setUniqueCode(createUniqueCode());
-        purchaseOrder.setDate(createPurchaseOrderDTO.getDate());
+        purchaseOrder.setDate(date);
         purchaseOrder.setItems(items);
         purchaseOrder.setClient(client);
 
