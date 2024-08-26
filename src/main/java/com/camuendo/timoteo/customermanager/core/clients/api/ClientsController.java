@@ -1,6 +1,6 @@
 package com.camuendo.timoteo.customermanager.core.clients.api;
 
-import com.camuendo.timoteo.customermanager.core.clients.ClientsServiceImpl;
+import com.camuendo.timoteo.customermanager.core.clients.ClientsService;
 import com.camuendo.timoteo.customermanager.core.clients.dto.CreateClientDTO;
 import com.camuendo.timoteo.customermanager.core.clients.dto.UpdateClientDTO;
 import com.camuendo.timoteo.customermanager.core.clients.entities.Client;
@@ -14,9 +14,9 @@ import java.util.List;
 @RequestMapping("/clients")
 public class ClientsController {
 
-    private final ClientsServiceImpl clientsService;
+    private final ClientsService clientsService;
 
-    public ClientsController(ClientsServiceImpl clientsService) {
+    public ClientsController(ClientsService clientsService) {
         this.clientsService = clientsService;
     }
 

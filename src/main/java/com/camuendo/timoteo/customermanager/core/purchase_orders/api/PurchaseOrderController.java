@@ -1,6 +1,6 @@
 package com.camuendo.timoteo.customermanager.core.purchase_orders.api;
 
-import com.camuendo.timoteo.customermanager.core.purchase_orders.PurchaseOrderServiceImpl;
+import com.camuendo.timoteo.customermanager.core.purchase_orders.PurchaseOrderService;
 import com.camuendo.timoteo.customermanager.core.purchase_orders.dto.CreatePurchaseOrderDTO;
 import com.camuendo.timoteo.customermanager.core.purchase_orders.dto.ResponsePurchaseOrderDTO;
 import com.camuendo.timoteo.customermanager.core.purchase_orders.dto.UpdatePurchaseOrderDTO;
@@ -15,9 +15,9 @@ import java.util.List;
 @RequestMapping("/purchase-orders")
 public class PurchaseOrderController {
 
-    private final PurchaseOrderServiceImpl purchaseOrderService;
+    private final PurchaseOrderService purchaseOrderService;
 
-    public PurchaseOrderController(PurchaseOrderServiceImpl purchaseOrderService) {
+    public PurchaseOrderController(PurchaseOrderService purchaseOrderService) {
         this.purchaseOrderService = purchaseOrderService;
     }
 

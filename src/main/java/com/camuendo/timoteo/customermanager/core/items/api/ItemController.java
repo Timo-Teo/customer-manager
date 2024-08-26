@@ -1,5 +1,6 @@
 package com.camuendo.timoteo.customermanager.core.items.api;
 
+import com.camuendo.timoteo.customermanager.core.items.ItemsService;
 import com.camuendo.timoteo.customermanager.core.items.ItemsServiceImpl;
 import com.camuendo.timoteo.customermanager.core.items.dto.CreateItemDTO;
 import com.camuendo.timoteo.customermanager.core.items.dto.UpdateItemDTO;
@@ -14,9 +15,9 @@ import java.util.List;
 @RequestMapping("/items")
 public class ItemController {
 
-    private final ItemsServiceImpl itemsService;
+    private final ItemsService itemsService;
 
-    public ItemController(ItemsServiceImpl itemsService) {
+    public ItemController(ItemsService itemsService) {
         this.itemsService = itemsService;
     }
 
